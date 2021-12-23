@@ -1,0 +1,17 @@
+<h1> <%= @author.firstname%> <%@author.lastname%> </h1>
+
+<ul>
+    <li> <%link_to "Edit Author", edit_author_path(@author)%> </li>
+    <li> <%link_to "Delete Author", author_path(@author),
+        method: :delete, data: {confirm: "Are you sure?"} %> </li>
+</ul>
+
+<%# ---------------------BOOKS---------------------------- %>
+
+<h2>Books</h2>
+<%= render @author.books %>
+
+<%# ---------------------ADD BOOKS------------------------- %>
+<h2>Add book</h2>
+
+<%= render 'books/form' %>

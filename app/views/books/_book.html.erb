@@ -1,0 +1,9 @@
+<div>
+    <div>
+        TITLE: <%= book.title %>
+    </div>
+</div>
+<div>
+    <%= link_to 'Delete Book' ,[book.arthor, book], method: :delete, data: {confirm: "Are you sure?"} %>
+    <%= link_to 'Edit Book',edit_arthor_book_path(@arthor) %>
+</div>
