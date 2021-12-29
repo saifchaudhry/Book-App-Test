@@ -1,0 +1,22 @@
+<div class= "container title">
+    ASSIGN TAGS
+
+    <%= form_tag(assign_book_tag_books_path, method: :post) do %>
+        <%= collection_select :book, :id, current_author.books.all.order('title ASC'), :id, :title,{include_blank: 'Select Book'}, onChange: 'EnableButton(this)' %>
+        <%= collection_select :tag, :id, Tag.all.order('name ASC'), :id, :name,{include_blank: 'Select Tag'} %>
+        <%= submit_tag 'Assign Tag' , class: "btn btn-dark select disabled", id: "assigntag"  %>
+    <% end %>
+
+
+    <script>
+        function EnableButton(txt) {
+            console.log('test')
+            var button = document.getElementById("assigntag");
+            if (txt.value != '') {
+                $(".select").removeClass("disabled");
+            
+            } else {
+                $(".select").addClass("disabled");
+            }
+        }
+    </script>

@@ -1,1 +1,11 @@
+<div class= "container">
+
+    <%# <%= form_tag(books_path, method: :get) do %> 
+        <%# <%= collection_select :book, :ids, current_author.books.all.order('title ASC'), :id, :title,{include_blank: 'Select Book'} %> 
+        <%# <%= collection_select :tag, :id, Tag.all.order('name ASC'), :id, :name,{include_blank: 'Select Tag'} %> 
+        <%# <%= submit_tag 'Search', name: nil, class: "btn btn-dark edit"%> 
+    <%# <% end %> 
+    <%= link_to 'Books Tags', books_assignbookstags_path , class: "btn btn-dark select" %>
+</div>
+
 <%= render 'table' %>

@@ -11,6 +11,13 @@
             <%= @book.description %>
         </div>
 
+        <div class= "tags">
+            TAGS: 
+            <% @book.tags.each do |t| %>
+                <button type="button" class="btn btn-primary"><%= t.name %></button>
+            <% end %>
+        </div>
+
         <div class= "back">
             <%= link_to 'Back', books_path, class: "btn btn-dark"%>
             <%= link_to 'Edit', edit_book_path(@book), class: "btn btn-dark" %> |

@@ -6,16 +6,26 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
+        <% if author_signed_in? %>
+          <li class="nav-item">
            <%= link_to "Add Book", new_book_path, class:"nav-link"%>
-        </li>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Books", books_path, class:"nav-link"%>
+          </li>
+        <% end %>
+
         <li class="nav-item">
-          <%= link_to "Books", books_path, class:"nav-link"%>
+          <% if author_signed_in? %>
+            <%= link_to "Logout", destroy_author_session_path, method: :delete, class: "nav-link" %>
+          <% end %>
         </li>
         
       </ul>
       <div style= "color: white;">
-      <%= "#{current_author.firstname} #{current_author.lastname}" %> 
+        <% if current_author.present? %>
+          <%= link_to "#{current_author.firstname} #{current_author.lastname}", authors_path, class: "btn btn-dark" %>
+        <% end %>
       </div>>
     </div>
   </div>

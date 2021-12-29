@@ -1,10 +1,12 @@
-<h1>Authors</h1>
+<div class= "container">
+    <div class= "title">
+        <%= "#{current_author.firstname} #{current_author.lastname}" %>
+    </div>
 
-<ul>
-    <%@author.each do |author|%>
-        <li>
-            <%= link_to author.firstname, author %>
-            <%= link_to author.lastname, author %>
-        </li>
-    <% end %>
-</ul>
+    <div>
+        <strong>EMAIL</strong> : <%= current_author.email %>
+    </div>
+
+    <%= link_to "Edit Author", edit_author_registration_path, class: "btn btn-dark select" %>
+</div>
+
