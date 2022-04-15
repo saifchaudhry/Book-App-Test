@@ -8,8 +8,9 @@ class AuthorsController < ApplicationController
     end
 
     def new
-        @author = Author.new
+        @author =Author.new
     end
+    
 
     def create
         @author = Author.new(author_params)
@@ -43,8 +44,8 @@ class AuthorsController < ApplicationController
     end
 
     private
-        def author_params
-            params.require(:author).permit(:firstname, :lastname, :email,:password, :confirm_password) 
-        end
+    def author_params
+        params.require(:author).permit(:firstname, :lastname, :email,:password, :confirm_password) 
+    end
 
 end
