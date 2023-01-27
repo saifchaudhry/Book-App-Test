@@ -1,8 +1,8 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.17.1"
 
-set :application, "book_app"
-set :repo_url, "git@github.com:Hassan-Ibrahim/BookApp.git"
+set :application, "Book-App-Test"
+set :repo_url, "git@github.com:saifchaudhry/Book-App-Test.git"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
@@ -21,13 +21,17 @@ set :repo_url, "git@github.com:Hassan-Ibrahim/BookApp.git"
 # set :pty, true
 
 # Default value for :linked_files is []
-append :linked_files, "config/database.yml", "config/master.key"
+# append :linked_files, "config/database.yml", "config/master.key"
 
 # Default value for linked_dirs is []
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "tmp/webpacker", "public/system", "vendor", "storage"
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
+# set :default_env, {
+#    PATH: '/home/devcon/.nvm/versions',
+#    NODE_ENVIRONMENT: 'production'
+# }
 
 # Default value for local_user is ENV['USER']
 # set :local_user, -> { `git config user.name`.chomp }
@@ -47,12 +51,13 @@ set :use_sudo,        false
 set :stage,           :production
 set :deploy_via,      :remote_cache
 set :deploy_to,       "/home/devcon/#{fetch :application}"
-set :puma_bind,       "unix://#{shared_path}/tmp/sockets/#{fetch(:application)}-puma.sock"
-set :puma_state,      "#{shared_path}/tmp/pids/puma.state"
-set :puma_pid,        "#{shared_path}/tmp/pids/puma.pid"
+set :puma_bind,       "unix:///home/devcon/Book-App-Test/shared/tmp/sockets/#{fetch(:application)}-puma.sock"
+set :puma_state,      "/home/devcon/Book-App-Test/shared/tmp/pids/puma.state"
+set :puma_pid,        "/home/devcon/Book-App-Test/shared/tmp/pids/puma.pid"
 set :puma_access_log, "#{release_path}/log/puma.access.log"
 set :puma_error_log,  "#{release_path}/log/puma.error.log"
 set :ssh_options,     { forward_agent: true, user: fetch(:user), keys: %w(~/.ssh/id_rsa.pub) }
 set :puma_preload_app, true
 set :puma_worker_timeout, nil
 set :puma_init_active_record, true  # Change to false when not using ActiveRecord
+set :default_env, {PATH: "$HOME/nodejs/bin:$PATH"}

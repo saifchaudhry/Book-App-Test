@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.3'
+ruby '3.0.4'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.4'
 gem 'pg'
 gem 'puma', '~> 5.0'
@@ -25,7 +25,7 @@ group :development do
   gem 'web-console', '>= 4.1.0'
   gem 'rack-mini-profiler', '~> 2.0'
   gem 'capistrano',         require: false
-  gem 'capistrano-rvm',     require: false
+  gem 'capistrano-rbenv',     require: false
   gem 'capistrano-rails',   require: false
   gem 'capistrano-bundler', require: false
   gem 'capistrano3-puma',   require: false

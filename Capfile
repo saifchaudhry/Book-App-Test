@@ -6,7 +6,7 @@ require "capistrano/deploy"
 
 require "capistrano/rails"
 require "capistrano/bundler"
-require "capistrano/rvm"
+require "capistrano/rbenv"
 require 'capistrano/puma'
 install_plugin Capistrano::Puma
 install_plugin Capistrano::Puma::Systemd
@@ -22,6 +22,11 @@ install_plugin Capistrano::Puma::Systemd
 require "capistrano/scm/git"
 install_plugin Capistrano::SCM::Git
 
+set :nvm_custom_path, "/home/devcon/.nvm/versions"
+set :rbenv_type, :user
+set :rbenv_ruby, '3.0.4'
+set :rbenv_custom_path, '/home/devcon/.rbenv'
+set :rails_env, 'production'
 # Include tasks from other gems included in your Gemfile
 #
 # For documentation on these, see for example:
