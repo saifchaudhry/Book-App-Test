@@ -1,0 +1,23 @@
+version: 2.1
+
+workflows:
+  build-deploy:
+    jobs:
+      - deploy-job:
+          filters:
+            branches:
+              only: master # Only run deploy job when commit is on the main branch
+
+jobs:
+  #  build and test jobs go here - not included for brevity
+  deploy-job:
+    docker:
+      - image: cimg/ruby:3.0.4
+    steps:
+      - checkout
+      - run:
+          name: Bundle Install
+          command: bundle check || bundle install
+      - run:
+          name: Deploy if tests pass and branch is Main
+          command: bundle exec cap production deploy
