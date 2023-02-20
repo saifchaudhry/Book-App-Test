@@ -23,4 +23,4 @@ jobs:
           command: bundle check || bundle install
       - run:
           name: Deploy if tests pass and branch is Main
-          command: bundle exec cap production deploy
+          command: bundle exec cap staging deploy
